@@ -172,7 +172,7 @@ When images are in `assets/`, Hugo automatically:
 - Enables lazy loading
 
 **Important notes:**
-- Image paths in markdown stay the same (`images/2024/photo.jpg`)
+- Use absolute paths in frontmatter (`/images/2024/photo.jpg`) for Hugo best practices
 - Hugo automatically detects and processes images from `assets/`
 - Videos should stay in `static/` (not processed by Hugo)
 - Requires Hugo Extended (for image processing support)

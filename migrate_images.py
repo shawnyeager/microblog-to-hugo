@@ -84,8 +84,8 @@ def migrate_images(dry_run=False, year=None):
     else:
         print(f"Migration complete. Moved {migrated} image(s) to {assets_dir}/")
         print()
-        print("Note: Image paths in markdown stay the same (images/...)")
-        print("Hugo will automatically process images from assets/")
+        print("Note: Use absolute paths in frontmatter (/images/...) for Hugo best practices")
+        print("Hugo will automatically process images from assets/ and serve originals at /images/")
 
 def main():
     parser = argparse.ArgumentParser(
