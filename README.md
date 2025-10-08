@@ -141,6 +141,59 @@ python3 fix_slugs.py
 
 Use this if you previously generated slugs with `add_slugs.py` and want to improve them.
 
+### 5. `migrate_images.py`
+
+Migrates images from `static/images/` to `assets/images/` to enable Hugo's built-in image processing.
+
+**What it does:**
+- Moves image files from static to assets directory
+- Enables Hugo's automatic WebP conversion and responsive srcsets
+- Supports dry-run mode for safe preview
+- Can filter by year for gradual migration
+- Handles multiple image formats (.jpg, .jpeg, .png, .gif, .webp)
+
+**Usage:**
+```bash
+python3 migrate_images.py              # Migrate all images
+python3 migrate_images.py --dry-run    # Preview changes without modifying files
+python3 migrate_images.py --year 2024  # Migrate only images from 2024
+```
+
+**Why migrate images?**
+
+Hugo has two locations for images:
+- **`static/images/`** - Served as-is without processing
+- **`assets/images/`** - Automatically processed by Hugo
+
+When images are in `assets/`, Hugo automatically:
+- Converts to WebP format for better compression
+- Generates responsive srcsets (400w, 800w, 1200w)
+- Adds proper width/height attributes
+- Enables lazy loading
+
+**Important notes:**
+- Image paths in markdown stay the same (`images/2024/photo.jpg`)
+- Hugo automatically detects and processes images from `assets/`
+- Videos should stay in `static/` (not processed by Hugo)
+- Requires Hugo Extended (for image processing support)
+
+**Example workflow:**
+```bash
+# Preview what would change
+python3 migrate_images.py --dry-run
+
+# Migrate images from 2024 first
+python3 migrate_images.py --year 2024
+
+# Test in your Hugo site
+cd ../your-hugo-site
+hugo server
+
+# If everything looks good, migrate remaining years
+cd ../microblog-to-hugo
+python3 migrate_images.py
+```
+
 ## Recommended Migration Workflow
 
 ### Option 1: One-Command Migration (Easiest)
@@ -172,7 +225,16 @@ Use this if you previously generated slugs with `add_slugs.py` and want to impro
      post = "/:slug/"
    ```
 
-6. **Test and verify**
+6. **(Optional) Migrate images for Hugo processing**
+   ```bash
+   # Preview migration
+   python3 migrate_images.py --dry-run
+
+   # Migrate all images
+   python3 migrate_images.py
+   ```
+
+7. **Test and verify**
    ```bash
    cd ../..  # Return to Hugo site root
    hugo server
@@ -205,7 +267,18 @@ Use this if you previously generated slugs with `add_slugs.py` and want to impro
      post = "/:slug/"
    ```
 
-6. **Test and verify**
+6. **(Optional) Migrate images for Hugo processing**
+   ```bash
+   # Preview migration
+   python3 migrate_images.py --dry-run
+
+   # Migrate images gradually by year
+   python3 migrate_images.py --year 2024
+   python3 migrate_images.py --year 2023
+   # etc.
+   ```
+
+7. **Test and verify**
    ```bash
    hugo server
    ```
