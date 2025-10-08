@@ -44,7 +44,15 @@ This is where automation became essential.
 
 ## The Refactoring Scripts
 
-I created five Python scripts to automate the cleanup:
+I created a set of Python scripts to automate the cleanup. You can run them individually for granular control, or use the wrapper script for a one-command migration:
+
+```bash
+# One-command migration with safety checks
+python3 migrate.py --dry-run  # Preview changes
+python3 migrate.py            # Run migration
+```
+
+The individual scripts:
 
 ### 1. Standardize Frontmatter
 
@@ -148,7 +156,13 @@ The migration was successful:
 
 I've released the migration scripts as an open-source project: [microblog-to-hugo](https://github.com/shawnyeager/microblog-to-hugo)
 
-The scripts can be used for:
+The toolkit includes:
+- **One-command migration** with `migrate.py` wrapper script
+- **Individual scripts** for granular control
+- **Dry-run mode** to preview changes safely
+- **Comprehensive documentation** with examples
+
+Use cases:
 - Micro.blog to Hugo migrations
 - General Hugo content refactoring
 - Slug generation

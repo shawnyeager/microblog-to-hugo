@@ -12,7 +12,47 @@ These scripts automate common tasks when migrating from Micro.blog to Hugo, incl
 - Hugo site with exported Micro.blog content
 - Content files in TOML frontmatter format (`+++` delimiters)
 
+## Quick Start
+
+For a one-command migration, use the wrapper script:
+
+```bash
+# Preview changes without modifying files
+python3 migrate.py --dry-run
+
+# Run full migration
+python3 migrate.py
+
+# Run with options
+python3 migrate.py --skip-filenames  # Skip filename cleanup
+python3 migrate.py --skip-slugs      # Skip slug generation
+```
+
+The wrapper script runs all steps in the recommended order with safety checks. For more granular control, use the individual scripts below.
+
 ## Scripts
+
+### `migrate.py` (Wrapper Script)
+
+One-stop-shop that runs all migration steps in order.
+
+**What it does:**
+- Runs standardize_frontmatter.py
+- Runs simplify_filenames.py (optional)
+- Runs add_slugs.py (optional)
+- Provides safety checks and progress reporting
+
+**Usage:**
+```bash
+python3 migrate.py              # Full migration
+python3 migrate.py --dry-run    # Preview only
+python3 migrate.py --help       # Show all options
+```
+
+**Options:**
+- `--dry-run` - Preview changes without modifying files
+- `--skip-filenames` - Skip filename simplification
+- `--skip-slugs` - Skip slug generation
 
 ### 1. `standardize_frontmatter.py`
 
@@ -118,6 +158,43 @@ python3 reorganize_content.py
 **⚠️ Warning:** This may break themes that expect a single `content/post/` directory. Test thoroughly and consider using categories/taxonomies instead.
 
 ## Recommended Migration Workflow
+
+### Option 1: One-Command Migration (Easiest)
+
+1. **Export content from Micro.blog**
+   - Use Hugo export feature from your Micro.blog settings
+   - Extract to your Hugo site's `content/post/` directory
+
+2. **Download migration scripts**
+   ```bash
+   cd your-hugo-site/
+   git clone https://github.com/shawnyeager/microblog-to-hugo scripts/migration
+   cd scripts/migration
+   ```
+
+3. **Preview changes**
+   ```bash
+   python3 migrate.py --dry-run
+   ```
+
+4. **Run migration**
+   ```bash
+   python3 migrate.py
+   ```
+
+5. **Update Hugo config** for slug-based permalinks
+   ```toml
+   [permalinks]
+     post = "/:slug/"
+   ```
+
+6. **Test and verify**
+   ```bash
+   cd ../..  # Return to Hugo site root
+   hugo server
+   ```
+
+### Option 2: Step-by-Step (More Control)
 
 1. **Export content from Micro.blog**
    - Use Hugo export feature from your Micro.blog settings
