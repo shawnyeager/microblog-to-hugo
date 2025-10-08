@@ -1,10 +1,10 @@
 # Micro.blog to Hugo Migration Tools
 
-A collection of Python scripts to help migrate and refactor content from Micro.blog to Hugo, specifically designed for use with the [mnml-hugo](https://github.com/shawnyeager/mnml-hugo) theme.
+A collection of Python scripts to help migrate and refactor content from Micro.blog to Hugo.
 
 ## Overview
 
-These scripts were developed during the migration of [shawnyeager.org](https://shawnyeager.org) from Micro.blog to a self-hosted Hugo site. They automate common tasks like standardizing frontmatter, generating slugs, and cleaning up filenames.
+These scripts automate common tasks when migrating from Micro.blog to Hugo, including standardizing frontmatter, generating slugs, and cleaning up filenames.
 
 ## Prerequisites
 
@@ -185,7 +185,7 @@ Remove date-based URL structures in favor of slug-only URLs.
 ## Compatibility
 
 - **Tested with:** Hugo 0.151.0
-- **Theme:** mnml-hugo (should work with any Hugo theme)
+- **Theme:** Should work with any Hugo theme
 - **Python:** 3.6+
 - **Content format:** TOML frontmatter
 
@@ -201,15 +201,10 @@ Contributions welcome! Please:
 
 MIT License - feel free to use, modify, and distribute.
 
-## Credits
-
-Created during the migration of [shawnyeager.org](https://shawnyeager.org) from Micro.blog to Hugo with the [mnml-hugo](https://github.com/shawnyeager/mnml-hugo) theme.
-
 ## Related Resources
 
 - [Hugo Documentation](https://gohugo.io/documentation/)
 - [Micro.blog](https://micro.blog)
-- [mnml-hugo theme](https://github.com/shawnyeager/mnml-hugo)
 
 ## Support
 
