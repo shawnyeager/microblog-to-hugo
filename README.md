@@ -141,22 +141,6 @@ python3 fix_slugs.py
 
 Use this if you previously generated slugs with `add_slugs.py` and want to improve them.
 
-### 5. `reorganize_content.py`
-
-Attempts to split content into separate directories by type.
-
-**What it does:**
-- Creates `content/posts/` and `content/notes/` directories
-- Moves titled posts to `posts/`
-- Moves titleless posts to `notes/`
-
-**Usage:**
-```bash
-python3 reorganize_content.py
-```
-
-**⚠️ Warning:** This may break themes that expect a single `content/post/` directory. Test thoroughly and consider using categories/taxonomies instead.
-
 ## Recommended Migration Workflow
 
 ### Option 1: One-Command Migration (Easiest)
