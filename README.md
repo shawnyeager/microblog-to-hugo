@@ -199,8 +199,12 @@ python3 migrate_images.py
 ### Option 1: One-Command Migration (Easiest)
 
 1. **Export content from Micro.blog**
-   - Use Hugo export feature from your Micro.blog settings
-   - Extract to your Hugo site's `content/post/` directory
+   - Go to your Micro.blog account settings
+   - Export **both** of these files:
+     - **"Export theme and Markdown"** (.zip) - Contains Hugo-formatted markdown posts
+     - **"Export new archive"** (.bar) - Contains all images and uploads
+   - Extract the .zip file to your Hugo site's `content/post/` directory
+   - Extract the .bar file to get the images/uploads folder
 
 2. **Download migration scripts**
    ```bash
@@ -243,8 +247,12 @@ python3 migrate_images.py
 ### Option 2: Step-by-Step (More Control)
 
 1. **Export content from Micro.blog**
-   - Use Hugo export feature from your Micro.blog settings
-   - Extract to your Hugo site's `content/post/` directory
+   - Go to your Micro.blog account settings
+   - Export **both** of these files:
+     - **"Export theme and Markdown"** (.zip) - Contains Hugo-formatted markdown posts
+     - **"Export new archive"** (.bar) - Contains all images and uploads
+   - Extract the .zip file to your Hugo site's `content/post/` directory
+   - Extract the .bar file to get the images/uploads folder
 
 2. **Standardize frontmatter**
    ```bash
